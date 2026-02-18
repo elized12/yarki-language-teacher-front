@@ -1,0 +1,105 @@
+.word-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.word-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.15);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.word-card:active {
+    transform: scale(0.98);
+}
+
+.word-card-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.word-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+}
+
+.word-card:hover .word-icon {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+.word-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+    transition: color 0.2s;
+}
+
+.word-card:hover .word-title {
+    color: #2563eb;
+}
+
+.word-card-arrow {
+    color: #cbd5e1;
+    font-size: 14px;
+    transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.word-card:hover .word-card-arrow {
+    color: #2563eb;
+    transform: translateX(4px);
+}
+
+@media (max-width: 400px) {
+    .word-card {
+        padding: 10px 14px;
+    }
+
+    .word-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .word-title {
+        font-size: 16px;
+    }
+}

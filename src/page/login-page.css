@@ -1,0 +1,21 @@
+.input-wrapper {
+    margin-bottom: 20px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-container {
+        padding: 30px 20px;
+    }
+}

@@ -1,0 +1,32 @@
+.menu-item.train .menu-icon {
+    background: #8b5cf6;
+    color: white;
+}
+
+.menu-item.dict .menu-icon {
+    background: #10b981;
+    color: white;
+}
+
+.menu-item.profile .menu-icon {
+    background: #f59e0b;
+    color: white;
+}
+
+.menu-section {
+    margin-bottom: 32px;
+}
+
+.menu-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

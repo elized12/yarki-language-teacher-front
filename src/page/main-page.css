@@ -1,0 +1,38 @@
+.lang-pair {
+    background: #f8fafc;
+    border-radius: 100px;
+    padding: 6px;
+    display: inline-flex;
+    margin-bottom: 24px;
+    border: 1px solid #e2e8f0;
+}
+
+.lang-btn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lang-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+.lang-btn:first-child {
+    color: #0f172a;
+}
+
+.lang-btn:last-child {
+    color: #0f172a;
+}
+
+.lang-btn:hover {
+    background: #e2e8f0;
+}
+
+.lang-btn.active:hover {
+    background: #1d4ed8;
+}
