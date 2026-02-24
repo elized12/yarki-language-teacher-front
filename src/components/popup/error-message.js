@@ -8,7 +8,7 @@ export default function ErrorMessage({ message, onClose }) {
 
         const timer = setTimeout(() => {
             onClose?.();
-        }, 4000);
+        }, 2000);
 
         return () => clearTimeout(timer);
     }, [message, onClose]);
@@ -16,10 +16,8 @@ export default function ErrorMessage({ message, onClose }) {
     if (!message) return null;
 
     return (
-        <div className="error-message">
-            <span className="error-icon">⚠</span>
+        <div className={"error-message" + (message !== "" ? " show" : "")}>
             <span className="error-text">{message}</span>
-            <button className="error-close" onClick={onClose}>×</button>
         </div>
     );
 }

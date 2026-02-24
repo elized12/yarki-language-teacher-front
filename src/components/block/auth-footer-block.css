@@ -14,3 +14,9 @@
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+@media (max-width:360px) {
+    .auth-footer {
+        font-size: 13px;
+    }
+}

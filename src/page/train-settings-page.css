@@ -1,0 +1,15 @@
+.train-settings-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.train-settings-params {
+    flex: 1;
+}
+
+@media (max-width:420px) {
+    .train-settings-params {
+        margin-bottom: 60px;
+    }
+}

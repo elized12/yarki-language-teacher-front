@@ -11,19 +11,12 @@ import ErrorMessage from "../components/popup/error-message";
 import { useNavigate } from "react-router";
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorMessagePopup, setErrorMessagePopup] = useState("");
-
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
 
-    useEffect(() => {
-        if (!auth.isAuth) {
-            navigate("/");
-        }
-    }, [auth.isAuth, navigate]);
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessagePopup, setErrorMessagePopup] = useState("");
 
     const onClickLoginButton = async () => {
         try {
@@ -31,36 +24,49 @@ export default function LoginPage() {
             navigate("/");
         }
         catch (ex) {
-            setErrorMessagePopup(ex.response?.data?.message);
+            const error = ex.toJSON();
+
+            if (500 <= error.status) {
+                setErrorMessagePopup("Произошла ошибка на сервере. Попробуйте позже.");
+                return;
+            }
+            else if (400 <= error.status < 500) {
+                setErrorMessagePopup(ex.response?.data?.message);
+                return;
+            }
+
+            setErrorMessagePopup("Неизвестная ошибка");
         }
     }
 
     return (
         <div className="container">
-            <AuthLogo />
-            <AuthHeaderBlock />
-            <form>
-                <InputField
-                    title="email"
-                    type="email"
-                    placeholder={"test@mail.ru"}
-                    value={email}
-                    onChange={(event) => { setEmail(event.target.value); }}
-                    icon="fa-envelope"
-                    isRequired={true}
-                />
-                <InputField
-                    title="password"
-                    type="password"
-                    placeholder={""}
-                    value={password}
-                    onChange={(event) => { setPassword(event.target.value); }}
-                    icon="fa-lock"
-                />
-            </form>
-            <ErrorMessage message={errorMessagePopup} onClose={() => (setErrorMessagePopup(""))} />
-            <AuthButton message={"Войти"} onClick={onClickLoginButton} />
-            <AuthFooterBlock />
+            <div className="content">
+                <AuthLogo />
+                <AuthHeaderBlock />
+                <form className="login-form">
+                    <InputField
+                        title="email"
+                        type="email"
+                        placeholder={"test@mail.ru"}
+                        value={email}
+                        onChange={(event) => { setEmail(event.target.value); }}
+                        icon="fa-envelope"
+                        isRequired={true}
+                    />
+                    <InputField
+                        title="password"
+                        type="password"
+                        placeholder={""}
+                        value={password}
+                        onChange={(event) => { setPassword(event.target.value); }}
+                        icon="fa-lock"
+                    />
+                </form>
+                <ErrorMessage message={errorMessagePopup} onClose={() => (setErrorMessagePopup(""))} />
+                <AuthButton message={"Войти"} onClick={onClickLoginButton} />
+                <AuthFooterBlock />
+            </div>
         </div>
     );
 }

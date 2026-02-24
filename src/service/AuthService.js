@@ -12,6 +12,7 @@ export default class AuthService {
     static logout() {
         localStorage.removeItem('acessToken');
         localStorage.removeItem('refreshToken');
+        localStorage.removeItem('user');
     }
 
     static async refresh(refreshToken) {

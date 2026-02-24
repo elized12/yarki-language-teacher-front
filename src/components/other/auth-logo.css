@@ -33,3 +33,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@media (max-width: 360px) {
+    .auth-logo-text {
+        font-size: 28px;
+    }
+}

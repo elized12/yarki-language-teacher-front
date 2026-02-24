@@ -3,7 +3,6 @@
     width: 100%;
     margin: 0 auto;
     padding: 24px 16px 40px 16px;
-    min-height: 100vh;
 }
 
 .language-selector {
@@ -152,5 +151,9 @@
 
     .lang-btn {
         flex: 0 0 auto;
+    }
+
+    #dictionary-container {
+        padding: 40px 10px 0 10px;
     }
 }

@@ -1,0 +1,66 @@
+.training-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding: 0 4px;
+}
+
+.training-back-btn {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    color: #475569;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.training-back-btn:hover {
+    background: #f8fafc;
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateX(-2px);
+}
+
+.training-back-btn:active {
+    transform: scale(0.95);
+}
+
+.training-progress-info {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+}
+
+.training-counter {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.training-progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.training-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    border-radius: 100px;
+    transition: width 0.3s ease;
+}
+
+.training-header-placeholder {
+    width: 44px;
+    height: 44px;
+}

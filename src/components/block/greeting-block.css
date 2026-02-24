@@ -13,3 +13,10 @@
     color: #64748b;
     font-size: 15px;
 }
+
+
+@media (max-width:420px) {
+    .greeting {
+        text-align: center;
+    }
+}

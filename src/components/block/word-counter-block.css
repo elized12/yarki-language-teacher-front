@@ -34,3 +34,9 @@
     font-size: 32px;
     backdrop-filter: blur(4px);
 }
+
+@media (max-width:420px) {
+    .stats-card {
+        display: none;
+    }
+}

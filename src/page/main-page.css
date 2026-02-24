@@ -36,3 +36,9 @@
 .lang-btn.active:hover {
     background: #1d4ed8;
 }
+
+@media (max-width:420px) {
+    .lang-pair {
+        display: none;
+    }
+}

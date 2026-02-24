@@ -58,3 +58,9 @@
         transform: translateX(5px);
     }
 }
+
+@media (max-width: 360px) {
+    .login-btn {
+        font-size: 16px;
+    }
+}

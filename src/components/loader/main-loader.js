@@ -1,8 +1,6 @@
 import './main-loader.css';
 
 export default function MainLoader() {
-
-    
     return (
         <div className="loading-container">
             <div className="loading-content">

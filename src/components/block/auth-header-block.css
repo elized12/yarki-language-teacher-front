@@ -14,3 +14,13 @@
     color: #64748b;
     font-size: 15px;
 }
+
+@media (max-width:360px) {
+    .auth-header h2 {
+        font-size: 24px;
+    }
+
+    .auth-header p {
+        font-size: 12px;
+    }
+}

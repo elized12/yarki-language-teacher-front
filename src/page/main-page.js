@@ -6,29 +6,46 @@ import WordCounterBlock from "../components/block/word-counter-block";
 import MainMenu from "../components/block/main-menu";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../store/AuthProvider";
-import { useNavigate } from "react-router";
+import LanguageService from "../service/LanguageService";
+import WordService from "../service/WordService";
+import ErrorMessage from "../components/popup/error-message";
 
 export default function MainPage() {
     const auth = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!auth.isAuth) {
-            return navigate("/login");
-        }
-    }, [auth.isAuth, navigate]);
 
     const [activeLang, setActiveLang] = useState("ru");
-    const languages = [
-        { id: 1, code: "ru", label: "Русский", flag: "🇷🇺" },
-        { id: 2, code: "en", label: "English", flag: "🇬🇧" },
-    ];
+    const languages = LanguageService.getLanguages();
 
+    const [countWord, setCountWord] = useState(0);
+
+    const [errorMessagePopup, setErrorMessagePopup] = useState("");
+
+    useEffect(() => {
+        const fetchCount = async () => {
+            try {
+                const response = await WordService.getCount(activeLang);
+                setCountWord(response.data.count);
+            } catch (ex) {
+                const error = ex.toJSON();
+                if (500 <= error.status) {
+                    setErrorMessagePopup("Ошибка сервера: Не удалось получить количество слов");
+                    return;
+                }
+                else if (400 <= error.status < 500) {
+                    setErrorMessagePopup(ex?.response?.data?.message);
+                    return;
+                }
+
+                setErrorMessagePopup("Неизвестная ошибка: не удалось получить кол-во слов");
+            }
+        };
+        fetchCount();
+    }, [activeLang]);
 
     return (
         <div className="container">
             <Logo />
-            <GreetingBlock name={"Крутяшка"} />
+            <GreetingBlock name={auth.user?.nickname ?? ""} />
 
             <div className="lang-pair">
                 {languages.map((lang) => {
@@ -37,12 +54,13 @@ export default function MainPage() {
                             key={lang.id}
                             className={`lang-btn ${activeLang === lang.code ? "active" : ""}`}
                             onClick={() => setActiveLang(lang.code)}
-                        > {lang.flag} {lang.label}</span>);
+                        > {lang.flag} {lang.name}</span>);
                 })}
             </div>
 
-            <WordCounterBlock count={10} languageCode={"RU"} />
+            <WordCounterBlock count={countWord} languageCode={activeLang.toUpperCase()} />
             <MainMenu />
+            <ErrorMessage message={errorMessagePopup} onClose={() => (setErrorMessagePopup(""))} />
         </div>
     );
 }

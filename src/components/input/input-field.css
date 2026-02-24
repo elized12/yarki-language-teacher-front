@@ -52,3 +52,9 @@
 .input-wrapper input.error {
     border-color: #ef4444;
 }
+
+@media (max-width: 360px) {
+    .input-group {
+        width: 96%;
+    }
+}

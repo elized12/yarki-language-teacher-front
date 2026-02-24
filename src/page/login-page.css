@@ -2,6 +2,12 @@
     margin-bottom: 20px;
 }
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -15,7 +21,8 @@
 }
 
 @media (max-width: 400px) {
-    .auth-container {
-        padding: 30px 20px;
+    .login-form {
+        justify-content: center;
+        align-items: center;
     }
 }

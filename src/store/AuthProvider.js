@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import AuthService from "../service/AuthService";
 import { useNavigate } from "react-router";
+import { setLogoutHandler } from "../http";
 
 export const AuthContext = createContext(null);
 
@@ -10,10 +11,14 @@ export default function AuthProvider({ children }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setLogoutHandler(() => {
+            setIsAuth(false);
+            setUser(null);
+        });
+
         const checkAuth = async () => {
             try {
                 const refreshToken = localStorage.getItem("refreshToken");
-
                 const authPromise = refreshToken
                     ? AuthService.refresh(refreshToken)
                     : Promise.resolve(null);
@@ -25,8 +30,10 @@ export default function AuthProvider({ children }) {
                     if (response?.data?.access_token) {
                         localStorage.setItem("accessToken", response.data.access_token);
                         setIsAuth(true);
+                        setUser(JSON.parse(localStorage.getItem("user")));
                     } else {
                         setIsAuth(false);
+                        setUser(null);
                     }
                 }).finally(() => {
                     setIsLoading(false);
@@ -47,7 +54,10 @@ export default function AuthProvider({ children }) {
             const response = await AuthService.login(email, password);
             localStorage.setItem('accessToken', response.data.access_token);
             localStorage.setItem('refreshToken', response.data.refresh_token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+
             setIsAuth(true);
+            setUser(response.data.user);
         }
         catch (ex) {
             throw ex;

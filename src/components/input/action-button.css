@@ -1,0 +1,71 @@
+.action-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px;
+    border: none;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+}
+
+.action-btn.primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.5);
+}
+
+.action-btn.secondary {
+    background: white;
+    border: 2px solid #e2e8f0;
+    color: #475569;
+}
+
+.action-btn.secondary:hover:not(:disabled) {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #f8fafc;
+}
+
+.action-btn.success {
+    background: #10b981;
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+}
+
+.action-btn.success:hover:not(:disabled) {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.action-btn i {
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.action-btn:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width:420px) {
+    .action-btn {
+        font-size: 14px;
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+}

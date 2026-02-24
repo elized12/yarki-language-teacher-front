@@ -1,0 +1,101 @@
+.empty-session-state {
+    text-align: center;
+    padding: 40px 24px;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    width: 100%;
+    animation: fadeIn 0.4s ease;
+}
+
+.empty-session-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: white;
+    font-size: 48px;
+    transform: rotate(-3deg);
+    animation: bounce 2s infinite;
+}
+
+.empty-session-state h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.empty-session-description {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty-session-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.empty-session-actions button {
+    width: 100%;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: rotate(-3deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-3deg) translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    .empty-session-state {
+        padding: 32px 16px;
+        margin-top: 20px;
+    }
+
+    .empty-session-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    .container h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .empty-session-description {
+        font-size: 14px;
+        text-align: center;
+    }
+}
