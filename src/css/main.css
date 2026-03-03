@@ -63,3 +63,12 @@ body {
         min-width: 340px;
     }
 }
+
+@media (min-width:420px) {
+    .container {
+        padding: 40px 26px;
+        height: auto;
+        width: 100%;
+        min-width: 400px;
+    }
+}

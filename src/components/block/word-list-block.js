@@ -1,13 +1,18 @@
 import "./word-list-block.css";
 
 import WordCard from "../card/word-card";
+import { useNavigate } from "react-router";
 
 export default function WordList({ words, searchQuery }) {
+    const navigate = useNavigate();
+
     return (
         <div className="words-list">
             {words.length > 0 ? (
                 words.map(word => (
-                    <WordCard key={word.id} word={word.word} />
+                    <WordCard key={word.id} word={word.word} onClick={() => {
+                        navigate(`/word/${word.id}`);
+                    }} />
                 ))
             ) : (
                 <div className="empty-state">

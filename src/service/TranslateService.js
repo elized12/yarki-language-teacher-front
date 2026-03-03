@@ -11,10 +11,7 @@ export default class TranslateService {
     }
 
     static async removeTranslate(firstWordId, secondWordId) {
-        return api.delete(`/translate}`, {
-            firstWordId: firstWordId,
-            secondWordId: secondWordId
-        });
+        return api.delete(`/translate/${firstWordId}/${secondWordId}`);
     }
 
     static async getTranslates(wordId) {

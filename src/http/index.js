@@ -1,7 +1,7 @@
 import axios from "axios";
 import AuthService from "../service/AuthService";
 
-export const API_URL = `http://192.168.0.142:8000`;
+export const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const api = axios.create({
     withCredentials: false,

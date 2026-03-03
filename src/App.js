@@ -10,6 +10,7 @@ import TrainingPage from './page/training-page';
 import RegisterPage from './page/register-page';
 import RequireAuthRoute from './components/route/require-auth-router';
 import GuestOnlyRouter from './components/route/guest-only-router';
+import WordDetailPage from './page/word-detail-page';
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
           <RequireAuthRoute>
             <DictionaryPage />
           </RequireAuthRoute>} />
+        <Route path="/word/:id" element={
+          <RequireAuthRoute>
+            <WordDetailPage />
+          </RequireAuthRoute>
+        } />
         <Route path="/translate" element={
           <RequireAuthRoute>
             <TranslatePage />

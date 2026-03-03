@@ -13,3 +13,10 @@
         margin-bottom: 60px;
     }
 }
+
+
+@media (min-width:420px) {
+    .train-settings-params {
+        margin-bottom: 60px;
+    }
+}
